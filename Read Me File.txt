@@ -1,0 +1,7 @@
+https://localhost:8443/user/create ======= GET
+
+https://localhost:8443/user/fetch ====== GET
+
+http://localhost:8090/demo ============= POST
+
+http://localhost:8090/demo ============= GET

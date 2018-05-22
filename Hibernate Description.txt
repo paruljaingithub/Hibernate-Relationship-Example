@@ -1,0 +1,133 @@
+oneToOne ===> Relationship
+
+Number of tables ---------- 1
+Usertable
+Address
+Hobby
+
+UserTable fields ------------- 2
+id, name 
+
+Address table fields ------------ 3
+id, city
+
+Hobby table fields ------------- 4
+id, name
+
+After appling one to one
+
+UserTable fields
+id, name, address_id
+
+constraints
+address_id refered as foreign key in usertable and that will refer to primary key of address table
+
+Defining in POJO
+
+Below field in USER DTO
+
+@OneToOne(cascade=CascadeType.ALL)
+private AddressDTO address;
+
+==================================================================================================================================================================
+
+Bidirectional OneToOne ====> Relationship
+
+Above 4 steps remain same
+
+After appling oneToOne bidirectional
+
+Address table fields
+
+id, city, user_id
+
+constraints
+user_id will be treated as foreign key in address table and that will refer to primary key of user table
+
+Defining in POJO
+
+User DTO
+@OneToOne(mappedBy="user", cascade=CascadeType.ALL, fetch= FetchType.LAZY)
+private AddressDTO address;
+
+Address DTO
+@OneToOne
+@JsonIgnore
+UserDTO user;
+
+==================================================================================================================================================================
+
+OneToMany ====> Relationship
+
+After appling one to many
+
+UserTable fields
+id, name
+
+Hobby table fields
+id, name
+
+OneToMany will create a new table that is junction of usertable id and hobby table id
+
+new generated table via OneToMany
+
+usertable_hobby table
+user_id, hobby_id
+
+Defining in POJO
+User DTO
+@OneToMany(cascade=CascadeType.ALL)
+private List<HobbyDTO> hobbies;
+
+====================================================================================================================================================================
+
+Bidirection of OneToMany ======> manyToOne
+
+After appling bidirectional manyToOne
+
+UserTable fields
+id, name
+
+Hobby table fields
+id, name, user_id
+
+constraint
+user_id will be refered as foreign key in hobby table and that will refer to primary key of usertable
+
+Defining in POJO
+User DTO
+@OneToMany(cascade=CascadeType.ALL)
+private List<HobbyDTO> hobbies;
+
+Address DTO
+@ManyToOne
+@JsonIgnore
+private UserDTO user;
+
+
+====================================================================================================================================================================
+
+ManyToMany relationship
+
+After appling ManyToMany
+
+UserTable fields
+id, name
+
+Task table fields
+id, name
+
+New table is getting generated
+usertable_task table
+user_id, task_id
+
+Defining in POJO
+User DTO
+@ManyToMany(cascade=CascadeType.ALL)
+private List<TaskDTO> tasks;
+
+======================================================================================================================================================================
+
+
+
+
