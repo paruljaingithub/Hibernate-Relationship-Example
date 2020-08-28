@@ -27,8 +27,8 @@
 	<distributionManagement>
     <repository>
       <id>snapshots</id>
-      <name>Quick Heal Central Repository</name>
-      <url>http://172.18.58.63:8888/artifactory/libs-snapshot-local</url>
+      <name>Repository name</name>
+      <url>http://locahost:8888/artifactory/libs-snapshot-local</url>
     </repository>
   </distributionManagement>
 
